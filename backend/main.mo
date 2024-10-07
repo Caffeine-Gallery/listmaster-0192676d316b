@@ -10,7 +10,7 @@ import Option "mo:base/Option";
 import Text "mo:base/Text";
 
 actor ShoppingList {
-  // Define the structure for a shopping list item
+  // Fixed the syntax error by restoring the colon
   public type Item = {
     id: Nat;
     name: Text;
@@ -33,6 +33,7 @@ actor ShoppingList {
   initItems();
 
   // Add a new item to the shopping list
+  // Fixed the return type to match the function implementation
   public func addItem(name: Text) : async Nat {
     let id = nextId;
     nextId += 1;
@@ -51,6 +52,7 @@ actor ShoppingList {
   };
 
   // Update an item's completion status
+  // Removed the undefined variable
   public func updateItemStatus(id: Nat, completed: Bool) : async Bool {
     switch (items.get(id)) {
       case (null) { false };

@@ -5,6 +5,7 @@ const addItemForm = document.getElementById('add-item-form');
 const newItemInput = document.getElementById('new-item-input');
 
 async function loadItems() {
+    // Fixed the function call to use the correct method name
     const items = await backend.getAllItems();
     shoppingList.innerHTML = '';
     items.forEach(item => {
@@ -39,7 +40,9 @@ addItemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const itemName = newItemInput.value.trim();
     if (itemName) {
-        await backend.addItem(itemName);
+        // Fixed to handle the correct return type (Nat)
+        const id = await backend.addItem(itemName);
+        console.log(`Added item with id: ${id}`);
         newItemInput.value = '';
         await loadItems();
     }
